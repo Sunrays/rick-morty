@@ -1,0 +1,97 @@
+.filters-container {
+    h3 {
+        margin: 10px 0;
+    }
+    .card {
+        border: 1px solid #000;
+        padding: 10px;
+        margin-bottom: 20px;
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+    }
+}
+.selected-filters {
+    list-style: none;
+    padding: 0;
+
+    
+    label {
+        padding: 5px;
+        background-color: grey;
+        border-radius: 5px;
+        color: #fff;
+        margin-right: 10px;
+
+        &:after {
+            content: 'x';
+            display: inline-block;
+            padding: 3px;
+        }
+
+        input[type="checkbox"] {
+            visibility: hidden;
+            position: absolute;
+            right: 0;
+        }
+
+        &:hover {
+            background-color: #333;
+        }
+    }
+}
+
+.user-container {
+    .user-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    
+        .user-item {
+            width: 48%;
+            box-sizing: border-box;
+            border: 1px solid #1f232a;
+            background-color: #333;
+            color: #fff;
+            margin-bottom: 20px;
+
+            .image-container {
+                height: 150px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                display: flex;
+                align-items: flex-end;
+
+                .image-desc {
+                    flex: 1 1 auto;
+                    background-color: rgba(0,0,0,0.5);
+                    padding: 0 10px;
+                }
+            }
+
+            .user-info {
+                list-style: none;
+                padding: 10px;
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+
+                    label {
+                        text-transform: uppercase;
+                        font-size: 0.8em;
+                    }
+                    span {
+                        color: #d57d1f;
+                    }
+                }
+            }
+        }
+    }
+
+}

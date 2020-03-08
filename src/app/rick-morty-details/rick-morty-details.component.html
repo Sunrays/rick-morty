@@ -1,0 +1,143 @@
+<div class="wrapper">
+    <div id="filtersContainer" class="filters-container">
+        <h2>Filters</h2>
+        <div class="card">
+            <h3>Species</h3>
+            <label>
+                <input type="checkbox" value="Human" (click)="addElementsToFilter($event)">
+                Human
+            </label>
+            <label>
+                <input type="checkbox" value="Mythology" (click)="addElementsToFilter($event)">
+                Mythology
+            </label>
+            <label>
+                <input type="checkbox" value="Other species" (click)="addElementsToFilter($event)">
+                Other species ...
+            </label>
+        </div>
+        <div class="card">
+            <h3>Gender</h3>
+            <label>
+                <input type="checkbox" value="Male" (click)="addElementsToFilter($event)"> Male
+            </label>
+            <label>
+                <input type="checkbox" value="Female" (click)="addElementsToFilter($event)"> Female
+            </label>
+        </div>
+        <div class="card">
+            <h3>Origin</h3>
+            <label>
+                <input type="checkbox" value="unknown" (click)="addElementsToFilter($event)"> Unknown
+            </label>
+            <label>
+                <input type="checkbox" value="Post-Apocalyptic Earth" (click)="addElementsToFilter($event)">
+                Post-Apocalyptic Earth
+            </label>
+            <label>
+                <input type="checkbox" value="Nuptia 4" (click)="addElementsToFilter($event)"> Nuptia 4
+            </label>
+            <label>
+                <input type="checkbox" value="Other origins" (click)="addElementsToFilter($event)"> Other origins ...
+            </label>
+        </div>
+    </div>
+
+    <div class="">
+        <div>
+            <h3>Selected Filters</h3>
+            <div class="selected-filters">
+                <label class="selected-label" *ngFor="let label of filterselectedArray">
+                    {{label}}
+                    <input type="checkbox" value={{label}} checked (click)="addElementsToFilter($event)">
+                </label>
+            </div>
+        </div>
+        
+        <div>
+            <h3>Search by name</h3>
+            <input type="search"/>
+        </div>
+
+        <div>
+            <h3>Search by ID</h3>
+            <select name="Sort by ID" (change)="sortName = $event.target.value">
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="">
+        <div *ngIf="!isFilterEnabled" class="user-container">
+            <ul class="user-list">
+                <li class="user-item" *ngFor="let item of (displayData | sort:sortName)">
+                    <div class="image-container" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                        <div class="image-desc">
+                            <h2>{{item.name}}</h2>
+                            <p>ID: {{item.id}} - created {{item.created | date:'short'}}</p>
+                        </div>
+                    </div>
+                    <ul class="user-info">
+                        <li>
+                            <label>Status</label>
+                            <span>{{item.status}}</span>
+                        </li>
+                        <li>
+                            <label>Species</label>
+                            <span>{{item.species}}</span>
+                        </li>
+                        <li>
+                            <label>Gender</label>
+                            <span>{{item.gender}}</span>
+                        </li>
+                        <li>
+                            <label>Origin</label>
+                            <span>{{item.gender}}</span>
+                        </li>
+                        <li>
+                            <label>Last location</label>
+                            <span>{{item.location.name}}</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="isFilterEnabled" class="user-container">
+            <ul class="user-list">
+                <li class="user-item" *ngFor="let item of (filteredDisplayData | sort:sortName)">
+                    <div class="image-container" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                        <div class="image-desc">
+                            <h2>{{item.name}}</h2>
+                            <p>ID: {{item.id}} - created {{item.created | date:'short'}}</p>
+                        </div>
+                    </div>
+                    <ul class="user-info">
+                        <li>
+                            <label>Status</label>
+                            <span>{{item.status}}</span>
+                        </li>
+                        <li>
+                            <label>Species</label>
+                            <span>{{item.species}}</span>
+                        </li>
+                        <li>
+                            <label>Gender</label>
+                            <span>{{item.gender}}</span>
+                        </li>
+                        <li>
+                            <label>Origin</label>
+                            <span>{{item.gender}}</span>
+                        </li>
+                        <li>
+                            <label>Last location</label>
+                            <span>{{item.location.name}}</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
