@@ -43,101 +43,103 @@
         </div>
     </div>
 
-    <div class="">
-        <div>
-            <h3>Selected Filters</h3>
-            <div class="selected-filters">
-                <label class="selected-label" *ngFor="let label of filterselectedArray">
-                    {{label}}
-                    <input type="checkbox" value={{label}} checked (click)="addElementsToFilter($event)">
-                </label>
+    <div class="aside">
+        <div class="">
+            <div>
+                <h3>Selected Filters</h3>
+                <div class="selected-filters">
+                    <label class="selected-label" *ngFor="let label of filterselectedArray">
+                        {{label}}
+                        <input type="checkbox" value={{label}} checked (click)="addElementsToFilter($event)">
+                    </label>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Search by name</h3>
+                <input type="search"/>
+            </div>
+
+            <div>
+                <h3>Search by ID</h3>
+                <select name="Sort by ID" (change)="sortName = $event.target.value">
+                    <option value="ascending">Ascending</option>
+                    <option value="descending">Descending</option>
+                </select>
             </div>
         </div>
-        
-        <div>
-            <h3>Search by name</h3>
-            <input type="search"/>
-        </div>
 
-        <div>
-            <h3>Search by ID</h3>
-            <select name="Sort by ID" (change)="sortName = $event.target.value">
-                <option value="ascending">Ascending</option>
-                <option value="descending">Descending</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="">
-        <div *ngIf="!isFilterEnabled" class="user-container">
-            <ul class="user-list">
-                <li class="user-item" *ngFor="let item of (displayData | sort:sortName)">
-                    <div class="image-container" [ngStyle]="{'background-image':'url('+ item.image +')'}">
-                        <div class="image-desc">
-                            <h2>{{item.name}}</h2>
-                            <p>ID: {{item.id}} - created {{item.created | date:'short'}}</p>
+        <div class="">
+            <div *ngIf="!isFilterEnabled" class="user-container">
+                <ul class="user-list">
+                    <li class="user-item" *ngFor="let item of (displayData | sort:sortName)">
+                        <div class="image-container" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                            <div class="image-desc">
+                                <h2>{{item.name}}</h2>
+                                <p>ID: {{item.id}} - created {{item.created | date:'short'}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <ul class="user-info">
-                        <li>
-                            <label>Status</label>
-                            <span>{{item.status}}</span>
-                        </li>
-                        <li>
-                            <label>Species</label>
-                            <span>{{item.species}}</span>
-                        </li>
-                        <li>
-                            <label>Gender</label>
-                            <span>{{item.gender}}</span>
-                        </li>
-                        <li>
-                            <label>Origin</label>
-                            <span>{{item.gender}}</span>
-                        </li>
-                        <li>
-                            <label>Last location</label>
-                            <span>{{item.location.name}}</span>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+                        <ul class="user-info">
+                            <li>
+                                <label>Status</label>
+                                <span>{{item.status}}</span>
+                            </li>
+                            <li>
+                                <label>Species</label>
+                                <span>{{item.species}}</span>
+                            </li>
+                            <li>
+                                <label>Gender</label>
+                                <span>{{item.gender}}</span>
+                            </li>
+                            <li>
+                                <label>Origin</label>
+                                <span>{{item.gender}}</span>
+                            </li>
+                            <li>
+                                <label>Last location</label>
+                                <span>{{item.location.name}}</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-        <div *ngIf="isFilterEnabled" class="user-container">
-            <ul class="user-list">
-                <li class="user-item" *ngFor="let item of (filteredDisplayData | sort:sortName)">
-                    <div class="image-container" [ngStyle]="{'background-image':'url('+ item.image +')'}">
-                        <div class="image-desc">
-                            <h2>{{item.name}}</h2>
-                            <p>ID: {{item.id}} - created {{item.created | date:'short'}}</p>
+            <div *ngIf="isFilterEnabled" class="user-container">
+                <ul class="user-list">
+                    <li class="user-item" *ngFor="let item of (filteredDisplayData | sort:sortName)">
+                        <div class="image-container" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                            <div class="image-desc">
+                                <h2>{{item.name}}</h2>
+                                <p>ID: {{item.id}} - created {{item.created | date:'short'}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <ul class="user-info">
-                        <li>
-                            <label>Status</label>
-                            <span>{{item.status}}</span>
-                        </li>
-                        <li>
-                            <label>Species</label>
-                            <span>{{item.species}}</span>
-                        </li>
-                        <li>
-                            <label>Gender</label>
-                            <span>{{item.gender}}</span>
-                        </li>
-                        <li>
-                            <label>Origin</label>
-                            <span>{{item.gender}}</span>
-                        </li>
-                        <li>
-                            <label>Last location</label>
-                            <span>{{item.location.name}}</span>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+                        <ul class="user-info">
+                            <li>
+                                <label>Status</label>
+                                <span>{{item.status}}</span>
+                            </li>
+                            <li>
+                                <label>Species</label>
+                                <span>{{item.species}}</span>
+                            </li>
+                            <li>
+                                <label>Gender</label>
+                                <span>{{item.gender}}</span>
+                            </li>
+                            <li>
+                                <label>Origin</label>
+                                <span>{{item.gender}}</span>
+                            </li>
+                            <li>
+                                <label>Last location</label>
+                                <span>{{item.location.name}}</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
+        </div>
     </div>
 </div>

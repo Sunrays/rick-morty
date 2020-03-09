@@ -12,8 +12,8 @@ export class SortPipe implements PipeTransform{
     // Ascending order
     private getAscendingComparer(attrName) : Comparer {
         return function compareByCost(p1 : any, p2 : any) : number {
-            if (p1[attrName] < p2[attrName]) return -1;
-            if (p1[attrName] > p2[attrName]) return 1;
+            if (p1[attrName] < p2[attrName]) return 1;
+            if (p1[attrName] > p2[attrName]) return -1;
             return 0;
         }
     }

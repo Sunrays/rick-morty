@@ -60,7 +60,7 @@
             margin-bottom: 20px;
 
             .image-container {
-                height: 150px;
+                height: 250px;
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
@@ -81,6 +81,7 @@
                 li {
                     display: flex;
                     justify-content: space-between;
+                    padding: 5px 0;
 
                     label {
                         text-transform: uppercase;
@@ -94,4 +95,17 @@
         }
     }
 
+}
+
+@media only screen and (min-width: 640px) {
+    .wrapper {
+        display: flex;
+    }
+    .filters-container {
+        min-width: 200px;
+        margin-right: 20px;
+    }
+    .user-container .user-list .user-item {
+        width: 25%;
+    }
 }
